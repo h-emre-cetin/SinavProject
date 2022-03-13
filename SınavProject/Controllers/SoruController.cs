@@ -16,12 +16,25 @@ namespace SınavProject.Controllers
         {
             _soruService = soruService;
         }
+
         public IActionResult Index()
         {
+            //Soru kategorileri çekilecek
+            //List<SinavKategori> soruKategoriler =
+            //return View(soruKategoriler);
             return View();
         }
-        public IActionResult Add(Soru soru)
+
+        [HttpPost]
+        public JsonResult Add(Soru soru)
         {
+            return new JsonResult(1);
+        }
+
+
+        public IActionResult Add(int? id)
+        {
+            //id varsa getbyid ile soruyu dön
             return View();
         }
 
@@ -30,9 +43,10 @@ namespace SınavProject.Controllers
             return View();
         }
 
-        public IActionResult Delete(Soru soru)
+        [HttpPost]
+        public JsonResult Delete(int id)
         {
-            return View();
+            return new JsonResult(1);
         }
 
         public IActionResult GetAll()
