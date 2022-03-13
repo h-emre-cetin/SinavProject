@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,25 @@ namespace SınavProject.Controllers
             return View();
         }
 
+        public IActionResult Add(Sik sik)
+        {
+            
+           return View();
+        }
         
+        public IActionResult Update(Sik sik)
+        {
+            return View();
+        }
+
+        public IActionResult Delete(Sik sik)
+        {
+            return View();
+        }
+
+        public IActionResult GetAll()
+        {
+            return View();
+        }
     }
 }

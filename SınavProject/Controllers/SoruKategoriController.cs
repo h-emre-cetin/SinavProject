@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,24 @@ namespace SınavProject.Controllers
             _soruKategoriService = soruKategoriService;
         }
         public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult Add(SoruKategori soruKategori)
+        {
+            return View();
+        }
+        public IActionResult Update(SoruKategori soruKategori)
+        {
+            return View();
+        }
+
+        public IActionResult Delete(SoruKategori soruKategori)
+        {
+            return View();
+        }
+
+        public IActionResult GetAll()
         {
             return View();
         }
