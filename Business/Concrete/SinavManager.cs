@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -22,22 +23,65 @@ namespace Business.Concrete
 
         public IResult Add(Sinav sinav)
         {
-            throw new NotImplementedException();
+            IResult result = BusinessRules.Run(CheckTheLimit(sinav.SinavSüresi), CheckIfNameNull(sinav.SinavAdı), CheckNull(sinav.BasariPuani));
+            if(result!= null)
+            {
+                return result;
+            }
+            _sinavDal.Add(sinav);
+            return new SuccessResult();
         }
 
-        public IResult Delete(Sinav sinav)
+        public IResult Delete(int id)
         {
-            throw new NotImplementedException();
+            _sinavDal.Delete(id);
+            return new SuccessResult("Sınav Silindi");
         }
 
         public IDataResult<List<Sinav>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Sinav>>(_sinavDal.GetList());
         }
 
         public IResult Update(Sinav sinav)
         {
-            throw new NotImplementedException();
+            IResult result = BusinessRules.Run(CheckTheLimit(sinav.SinavSüresi), CheckIfNameNull(sinav.SinavAdı), CheckNull(sinav.BasariPuani));
+            if (result != null)
+            {
+                return result;
+            }
+            _sinavDal.Update(sinav);
+            return new SuccessResult("Sinav Güncellendi");
+        }
+
+        private IResult CheckTheLimit(int sinavSuresi)
+        {
+            if (sinavSuresi <3)
+            {
+                return new ErrorResult("Sınav Süresi 3 dakikadan az olamaz");
+            }
+
+            return new SuccessResult();
+        }
+
+        private IResult CheckIfNameNull(string sinavAdı)
+        {
+            if (string.IsNullOrEmpty(sinavAdı))
+            {
+                return new ErrorResult("Sınav adı boş kalamaz.");
+            }
+
+            return new SuccessResult();
+        }
+
+        private IResult CheckNull(int basariPuani)
+        {
+            if (basariPuani < 10)
+            {
+                return new ErrorResult("Başarı Puanı 10'dan az olamaz.");
+            }
+
+            return new SuccessResult();
         }
     }
 }

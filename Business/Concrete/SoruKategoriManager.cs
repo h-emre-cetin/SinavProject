@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -21,22 +22,47 @@ namespace Business.Concrete
 
         public IResult Add(SoruKategori soruKategori)
         {
-            throw new NotImplementedException();
+            IResult result = BusinessRules.Run(CheckLenght(soruKategori.SoruKategoriAdi));
+            if(result != null)
+            {
+                return result;
+            }
+            _soruKategoriDal.Add(soruKategori);
+            return new SuccessResult();
         }
 
-        public IResult Delete(SoruKategori soruKategori)
+        public IResult Delete(int id)
         {
-            throw new NotImplementedException();
+            _soruKategoriDal.Delete(id);
+            return new SuccessResult();
         }
 
         public IDataResult<List<SoruKategori>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<SoruKategori>>(_soruKategoriDal.GetList());
         }
 
         public IResult Update(SoruKategori soruKategori)
         {
-            throw new NotImplementedException();
+            IResult result = BusinessRules.Run(CheckLenght(soruKategori.SoruKategoriAdi));
+            if (result != null)
+            {
+                return result;
+            }
+            _soruKategoriDal.Update(soruKategori);
+            return new SuccessResult("Soru Kategorisi Güncellendi");
+        }
+
+        private IResult CheckLenght(string soruKategoriAdi)
+        {
+
+            var result = soruKategoriAdi.Length;
+
+            if (result <= 1)
+            {
+                return new ErrorResult("Kategori adı bir harften fazla olmalıdır.");
+            }
+            return new SuccessResult();
         }
     }
 }

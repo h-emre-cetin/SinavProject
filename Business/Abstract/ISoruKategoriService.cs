@@ -16,7 +16,7 @@ namespace Business.Abstract
 
         IResult Update(SoruKategori soruKategori);
 
-        IResult Delete(SoruKategori soruKategori);
+        IResult Delete(int id);
 
     }
 }

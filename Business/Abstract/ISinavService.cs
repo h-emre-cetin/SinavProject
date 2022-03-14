@@ -15,6 +15,6 @@ namespace Business.Abstract
 
         IResult Update(Sinav sinav);
 
-        IResult Delete(Sinav sinav);
+        IResult Delete(int id);
     }
 }

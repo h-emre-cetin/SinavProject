@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -22,22 +23,47 @@ namespace Business.Concrete
 
         public IResult Add(Soru soru)
         {
-            throw new NotImplementedException();
+            IResult result = BusinessRules.Run(CheckIfNameNull(soru.Sorular));
+            if (result!= null)
+            {
+                return result;
+            }
+            _soruDal.Add(soru);
+
+            return new SuccessResult();
         }
-        
+
         public IResult Delete(int id)
         {
-            throw new NotImplementedException();
+            _soruDal.Delete(id);
+            return new SuccessResult();
         }
 
         public IDataResult<List<Soru>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Soru>>(_soruDal.GetList());
         }
 
         public IResult Update(Soru soru)
         {
-            throw new NotImplementedException();
+            IResult result = BusinessRules.Run(CheckIfNameNull(soru.Sorular));
+            if (result != null)
+            {
+                return result;
+            }
+            _soruDal.Update(soru);
+
+            return new SuccessResult();
+        }
+
+        private IResult CheckIfNameNull(string sorular)
+        {
+            if (string.IsNullOrEmpty(sorular))
+            {
+                return new ErrorResult("Soru boş kalamaz.");
+            }
+
+            return new SuccessResult();
         }
     }
 }

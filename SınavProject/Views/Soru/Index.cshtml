@@ -1,6 +1,43 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-<h2>Merhaba</h2>
+﻿
+<h2>Soru Liste</h2>
+<br />
+
+
+<ul class="list-group">
+    <li class="list-group-item">
+        Cras justo odio
+        <button type="button" class="btn btn-primary" value='1' onclick='Update(this.value)'>Güncelle</button>
+        <button type="button" class="btn btn-danger" value='1' onclick='Delete(this.value)'>Sil</button>
+    </li>
+</ul>
+
+
+<script>
+
+    function Update(val) {
+        //window.location.href = '/Soru/Add/';
+        window.location.href = '/Soru/Add?id=' + val;
+        return 0;
+    }
+
+    function Delete(val) {
+        console.log(val);
+
+        window.$.ajax({
+            type: "POST",
+            url: "/Soru/Delete",
+            dataType: 'JSON',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(val),
+            success: function (data) {
+                alert("Ok");
+                noty("am");
+            },
+            error: function (data) {
+                alert("Error");
+            }
+        });
+
+        return 0;
+    }
+</script>
