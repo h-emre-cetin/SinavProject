@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace Business.Abstract
 {
     public  interface ISinavKategoriService
     {
-        List<SinavKategori> GetAll();
-        void Add(SinavKategori sinavKategori);
+        IDataResult<List<SinavKategori>> GetAll();
+        IResult Add(SinavKategori sinavKategori);
 
-        void Update(SinavKategori sinavKategori);
+        IResult Update(SinavKategori sinavKategori);
 
-        void Delete(SinavKategori sinavKategori);
+        IResult Delete(SinavKategori sinavKategori);
     }
 }

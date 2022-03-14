@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -19,24 +20,24 @@ namespace Business.Concrete
             _soruDal = soruDal;
         }
 
-        public void Add(Soru soru)
+        public IResult Add(Soru soru)
         {
-            _soruDal.Add(soru);
+            throw new NotImplementedException();
+        }
+        
+        public IResult Delete(int id)
+        {
+            throw new NotImplementedException();
         }
 
-        public void Delete(Soru soru)
+        public IDataResult<List<Soru>> GetAll()
         {
-            _soruDal.Delete(soru);
+            throw new NotImplementedException();
         }
 
-        public List<Soru> GetAll()
+        public IResult Update(Soru soru)
         {
-            return _soruDal.GetList();
-        }
-
-        public void Update(Soru soru)
-        {
-            _soruDal.Update(soru);
+            throw new NotImplementedException();
         }
     }
 }

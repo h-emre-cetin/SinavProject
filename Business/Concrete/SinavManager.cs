@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -19,25 +20,24 @@ namespace Business.Concrete
             _sinavDal = sinavDal;
         }
 
-        public void Add(Sinav sinav)
+        public IResult Add(Sinav sinav)
         {
-            _sinavDal.Add(sinav);
+            throw new NotImplementedException();
         }
 
-        public void Delete(Sinav sinav)
+        public IResult Delete(Sinav sinav)
         {
-            _sinavDal.Delete(sinav);
+            throw new NotImplementedException();
         }
 
-        public List<Sinav> GetAll()
+        public IDataResult<List<Sinav>> GetAll()
         {
-            return _sinavDal.GetList();
+            throw new NotImplementedException();
         }
 
-        public void Update(Sinav sinav)
+        public IResult Update(Sinav sinav)
         {
-            _sinavDal.Update(sinav);
-
+            throw new NotImplementedException();
         }
     }
 }
