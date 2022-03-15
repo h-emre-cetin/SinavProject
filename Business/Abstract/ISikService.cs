@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace Business.Abstract
 {
     public  interface ISikService
     {
-        List<Sik> GetAll();
-        void Add(Sik sik);
+        IDataResult<List<Sik>> GetAll();
+        IResult Add(Sik sik);
 
-        void Update(Sik sik);
+        IResult Update(Sik sik);
 
-        void Delete(Sik sik);
+        IResult Delete(int id);
     }
 }

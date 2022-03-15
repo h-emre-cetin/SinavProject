@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace Business.Abstract
 {
     public  interface ISoruService
     {
-        List<Soru> GetAll();
-        void Add(Soru soru);
+        IDataResult<List<Soru>> GetAll();
+        IResult Add(Soru soru);
 
-        void Update(Soru soru);
+        IResult Update(Soru soru);
 
-        void Delete(Soru soru);
+        IResult Delete(int id);
     }
 }
