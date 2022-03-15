@@ -1,6 +1,4 @@
-﻿@model Entities.Concrete.SinavKategori
-
-
+﻿
 <h2>Soru Oluştur</h2>
 
 <select class="form-control">
@@ -32,12 +30,13 @@
 
         window.$.ajax({
             type: "POST",
-            url: "/Soru/Add",
+            url: "/Soru/AddS",
             dataType: 'JSON',
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(objPost),
             success: function (data) {
-                alert("Ok");
+                console.log(data);
+                alert("Kullanıcı adı hatalı");
             },
             error: function (data) {
                 alert("Error");
