@@ -23,7 +23,7 @@ namespace Business.Concrete
 
         public IResult Add(Sinav sinav)
         {
-            IResult result = BusinessRules.Run(CheckTheLimit(sinav.SinavSüresi), CheckIfNameNull(sinav.SinavAdı), CheckNull(sinav.BasariPuani));
+            IResult result = BusinessRules.Run(CheckTheLimit(sinav.SinavSuresi), CheckIfNameNull(sinav.SinavAdı), CheckNull(sinav.BasariPuani));
             if(result!= null)
             {
                 return result;
@@ -45,7 +45,7 @@ namespace Business.Concrete
 
         public IResult Update(Sinav sinav)
         {
-            IResult result = BusinessRules.Run(CheckTheLimit(sinav.SinavSüresi), CheckIfNameNull(sinav.SinavAdı), CheckNull(sinav.BasariPuani));
+            IResult result = BusinessRules.Run(CheckTheLimit(sinav.SinavSuresi), CheckIfNameNull(sinav.SinavAdı), CheckNull(sinav.BasariPuani));
             if (result != null)
             {
                 return result;

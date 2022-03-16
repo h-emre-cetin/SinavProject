@@ -17,19 +17,40 @@ namespace SınavProject.Controllers
             _sinavService = sinavService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var result = _sinavService.GetAll();
+            if (result.Success)
+            {
+                return View();
+            }
+            return BadRequest();
+             
         }
 
+        [HttpPost]
         public IActionResult Add(Sinav sinav)
         {
-            return View();
+            var result = _sinavService.Add(sinav);
+            if (result.Success)
+            {
+                return View();
+            }
+
+            return BadRequest();
+            
         }
 
+        [HttpPost]
         public IActionResult Update(Sinav sinav)
         {
-            return View();
+            var result = _sinavService.Update(sinav);
+            if (result.Success)
+            {
+                return View();
+            }
+            return BadRequest();
         }
 
         public IActionResult Delete(Sinav sinav)
@@ -37,9 +58,15 @@ namespace SınavProject.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult GetAll()
         {
-            return View();
+            var result = _sinavService.GetAll();
+            if (result.Success)
+            {
+                return View();
+            }
+            return BadRequest();
         }
 
     }

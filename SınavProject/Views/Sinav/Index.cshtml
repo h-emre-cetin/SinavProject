@@ -3,5 +3,36 @@
 *@
 @{
 }
-<h2>SA
-    </h2>
+<h2>
+Sinavlar    
+</h2>
+
+<button type="button" id="Sinavlar" class="btn btn-warning">Sınavları Listele</button>
+
+
+<script>
+
+    
+    $( "#Sinavlar" ).click(function() {
+
+        var objPost = new Object();
+        
+
+        console.log(objPost);
+
+        window.$.ajax({
+            type: "GET",
+            url: "/Sinav/Index",
+            dataType: 'JSON',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(objPost),
+            success: function (data) {
+                console.log(data);
+                alert("!");
+            },
+            error: function (data) {
+                alert("Error");
+            }
+        });
+    });
+</script>

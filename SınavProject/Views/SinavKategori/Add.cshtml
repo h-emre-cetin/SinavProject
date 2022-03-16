@@ -3,9 +3,37 @@
 *@
 @{
 }
+<h2>Kategori Ekleme</h2>
 
-
-<input class="form-control form-control-lg" id="soru" type="text" placeholder="Soru metni">
+<input class="form-control form-control-lg" id="kategori" type="text" placeholder="Sınav Kategorisi giriniz">
 <br/>
 
-<button type="button" id="Add" class="btn btn-success">Success</button>
+<button type="button" id="Add" class="btn btn-success">Ekle</button>
+
+<script>
+
+    //kategori ekle
+    $( "#Add" ).click(function() {
+
+        var objPost = new Object();
+        objPost.KategoriAdi = window.$("#kategori").val();
+      
+
+        console.log(objPost);
+
+        window.$.ajax({
+            type: "POST",
+            url: "/SinavKategori/Add",
+            dataType: 'JSON',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(objPost),
+            success: function (data) {
+                console.log(data);
+               
+            },
+            error: function (data) {
+                alert("Error");
+            }
+        });
+    });
+</script>

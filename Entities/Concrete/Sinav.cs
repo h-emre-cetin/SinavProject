@@ -15,7 +15,7 @@ namespace Entities.Concrete
         public SinavKategori SinavKategori { get; set; }
         public string SinavAdı { get; set; }
 
-        public int SinavSüresi { get; set; }
+        public int SinavSuresi { get; set; }
 
         public string SınavAciklamasi { get; set; }
 

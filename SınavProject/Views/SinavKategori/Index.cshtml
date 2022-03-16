@@ -3,4 +3,13 @@
 *@
 @{
 }
-<h2>ALO</h2>
+<h2>Kategoriler</h2>
+<button type="button" id="kategoriListele" class="btn btn-warning">Kategorileri Listele</button>
+
+
+<script>
+    $("kategoriListele").click(function (data) {
+        $(this).data("kategoriAdi");
+        console.log("veriler");
+    });
+</script>

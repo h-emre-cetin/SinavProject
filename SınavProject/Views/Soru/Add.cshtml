@@ -10,7 +10,7 @@
     <option value="0">Çoktan seçmeli</option>
     <option value="1"> Açıklamalı</option>
 </select>
-<button type="button" id="Add" class="btn btn-success">Success</button>
+<button type="button" id="Add" class="btn btn-success">Soruyu Ekle</button>
 
 
 
@@ -27,7 +27,7 @@
 
         window.$.ajax({
             type: "POST",
-            url: "/Soru/AddS",
+            url: "/Soru/Add",
             dataType: 'JSON',
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(objPost),

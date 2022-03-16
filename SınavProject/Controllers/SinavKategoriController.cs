@@ -16,13 +16,29 @@ namespace SınavProject.Controllers
         {
             _sinavKategoriService = sinavKategoriService;
         }
+
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var result = _sinavKategoriService.GetAll();
+            if (result.Success)
+            {
+                return View();
+
+            }
+            return BadRequest();
         }
+
+        [HttpPost]
         public IActionResult Add(SinavKategori sinavKategori)
         {
+            var result = _sinavKategoriService.Add(sinavKategori);
+            if (result.Success)
+            {
             return View();
+
+            }
+            return BadRequest();
         }
 
         public IActionResult Update(SinavKategori sinavKategori)

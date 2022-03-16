@@ -22,19 +22,30 @@ namespace SınavProject.Controllers
             //Soru kategorileri çekilecek
             //List<SinavKategori> soruKategoriler =
             //return View(soruKategoriler);
-            return View();
+            var result = _soruService.GetAll();
+            if (result.Success)
+            {
+                return View();
+            }
+            return BadRequest();
+            
         }
 
         [HttpPost]
         public JsonResult Add(Soru soru)
         {
-            return new JsonResult(1);
+            var result = _soruService.Add(soru);
+            if (result.Success)
+            {
+                return new JsonResult(1);
+            }
+            return new JsonResult(2);
         }
 
 
         public IActionResult Add(int? id)
         {
-            //id varsa getbyid ile soruyu dön
+        
             return View();
         }
 
